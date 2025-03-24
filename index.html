@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html ng-app='MenuCategoriesApp'>
-  <head>
-    <meta charset="utf-8">
-    <script src="angular.min.js"></script>
-    <script src="app.js"></script>
-    <link rel="stylesheet" href="styles.css">
-    <title>Module-3 Coding Assignment</title>
-  </head>
-  <body>
-    <h1>Module-3 Coding Assignment</h1>
-    
-    <div ng-controller='MenuCategoriesController as menu'>
+
+<head>
+  <meta charset="utf-8">
+  <!-- styles -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- library js -->
+  <script src="angular.min.js"></script>
+  <!-- module  js -->
+  <script src="MenuCategoriesService.js"></script>
+  <script src="MenuCategoriesController.js"></script>
+  <script src="app.js"></script>
+  <title>Module-3 Coding Assignment</title>
+</head>
+
+<body ng-controller='MenuCategoriesController as menu'>
+  <fieldset>
+    <legend>
+      <h1>Module-3 Coding Assignment</h1>
+    </legend>
+    <div>
       <input type="text" placeholder="Seach menu items" ng-model="menu.search_menuitems">
-      <input type="button" ng-click="menu.NarrowDownMenuItems();"  value="Narrow It Down For Me!">
+      <input type="button" ng-click="menu.NarrowDownMenuItems();" value="Narrow It Down For Me!">
       <h3>List of Menu Items</h3>
       <ul>
-        <li title="name||short_name||Description" ng-repeat="category in menu.foundArray | filter : menu.search_menuitems">
+        <li title="name||short_name||Description"
+          ng-repeat="category in menu.foundArray | filter : menu.search_menuitems">
           {{ category.name }} || {{ category.short_name }} || {{ category.description }}
-          - <input type="button" style="border-radius: 2;" ng-click="menu.removeMenuItems(category.short_name);"  value="Don't want this one!">
+          - <input type="button" style="border-radius: 2;" ng-click="menu.removeMenuItems(category.short_name);"
+            value="Don't want this one!">
         </li>
       </ul>
     </div>
+  </fieldset>
+</body>
 
-  </body>
 </html>
